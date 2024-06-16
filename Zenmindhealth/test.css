@@ -1,0 +1,117 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3799, #4a69bd);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.heading {
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.question {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    color: #fff;
+    border-radius: 30px;
+    font-size: 24px;
+    padding: 30px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    text-align: center;
+    animation: fadeIn 1s ease forwards;
+}
+
+.optionBtn {
+    font-size: 20px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #4a69bd, #1e3799);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: #fff;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.optionBtn:hover {
+    background: linear-gradient(135deg, #1e3799, #4a69bd);
+    border-color: #fff;
+}
+h2{
+    margin: 0 100px;
+    color:white;
+}
+#nextBtn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #20c997, #0f9b8e);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    display: none;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+#results {
+    margin-top: 20px;
+}
+
+/* Add h1 styles */
+h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+    margin: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+    /* Add display block to ensure new line */
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

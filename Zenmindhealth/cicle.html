@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inclined Circles</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #3498db, #8e44ad); /* Gradient background */
+    flex-direction: column; /* Align elements vertically */
+  }
+
+  .circle-container {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-30deg); /* Rotate the container */
+    margin-top: 20px; /* Adjust margin to create space between heading and circles */
+  }
+
+  .circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f39c12, #e74c3c); /* Gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform-origin: center;
+  }
+
+  .circle h2 {
+    margin: 0;
+    color: #fff; /* Text color */
+  }
+
+  .circle:nth-child(1) {
+    transform: rotate(0deg) translateY(-220px) rotate(30deg); /* Position and rotate the first circle */
+  }
+
+  .circle:nth-child(2) {
+    transform: rotate(60deg) translateY(-220px) rotate(330deg); /* Position and rotate the second circle */
+  }
+
+  .circle:nth-child(3) {
+    transform: rotate(120deg) translateY(-220px) rotate(270deg); /* Position and rotate the third circle */
+  }
+
+  .circle:nth-child(4) {
+    transform: rotate(180deg) translateY(-220px) rotate(240deg); /* Position and rotate the fourth circle */
+  }
+
+  .circle:nth-child(5) {
+    transform: rotate(240deg) translateY(-220px) rotate(150deg); /* Position and rotate the fifth circle */
+  }
+
+  .circle:nth-child(6) {
+    transform: rotate(300deg) translateY(-220px) rotate(90deg); /* Position and rotate the sixth circle */
+  }
+
+  /* Correct the rotation of heading 4 */
+  .circle:nth-child(4) h2 {
+    transform: rotate(-30deg); /* Rotate heading 4 back to upright position */
+  }
+
+  h1, h2 {
+    text-align: center;
+    margin: 10px 0;
+    color: #fff; /* Text color */
+  }
+</style>
+</head>
+<body>
+  <div>
+    <h1>Pinpoint the problem you feel you posses</h1>
+    
+  </div>
+  <div class="circle-container">
+    <div class="circle"  onclick="  window.location.href = './page.html'; "><h2>Depression</h2></div>
+    <div class="circle"><h2>Anxiety</h2></div>
+    <div class="circle"><h2>Attention deficit</h2></div>
+    <div class="circle"><h2>Hyperactivity disorder</h2></div>
+    <div class="circle"><h2>Inferiority complex</h2></div>
+    <div class="circle"><h2>Burnout</h2></div>
+  </div>
+  <h2>
+    Hang Tight,We are there for you!
+  </h2>
+</body>
+</html>

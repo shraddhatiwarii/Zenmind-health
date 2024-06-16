@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ZenMind</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <header id="navbar">
+        <nav class="navbar-container container">
+            <a href="/" class="home-link">
+                <div class="navbar-logo">
+                    <img src="zenmind-Photoroom-Photoroom.png">
+                    <p>ZenMind</p>
+                </div>
+
+            </a>
+            <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu"
+                aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="navbar-menu" aria-labelledby="navbar-toggle">
+                <ul class="navbar-links">
+                    <li class="navbar-item" onclick="showSection('Home')">
+                        <i class="fa-solid fa-house" style="color:#F5DE7A"></i>
+                        <span class="navbar-link">Home</span>
+                    </li>
+                    <li class="navbar-item" onclick="showSection('About')">
+                        <i class="fa-solid fa-circle-info" style="color:#F5DE7A"></i>
+                          <span class="navbar-link">About</span>
+                    </li>
+
+                    <li class="navbar-item" onclick="showSection('Counsellor')">
+                        <i class="fa-solid fa-users" style="color:#F5DE7A"></i>
+
+                        <span class="navbar-link">Counsellor</span>
+                    </li>
+                    <li class="navbar-item" onclick="showSection('Blog')">
+                        <i class="fa-solid fa-play" style="color:#F5DE7A"></i>
+
+                        <span class="navbar-link">Blog</span>
+                    </li>
+                    <li class="navbar-item" onclick="showSection('form-container')">
+                        <i class="fa-solid fa-right-to-bracket" style="color:#F5DE7A"></i>
+                        <span class="navbar-link">Signup</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <script>
+
+        function loadinganimation() {
+            gsap.from(".section", {
+                y: 100,
+                opacity: 0,
+                delay: 0.1,
+                duration: 0.9,
+                stagger: 0.1,
+            })
+
+                ;
+        }
+        gsap.from("#page1 h1", {
+            y: 100,
+            opacity: 0,
+            delay: 0.1,
+            duration: 0.9,
+            stagger: 0.1,
+        })
+
+            ;
+        loadinganimation();
+
+        // Toggle navbar menu visibility
+        function showSection(section) {
+            // Hide all sections
+            var sections = document.getElementsByClassName("section");
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = "none";
+            }
+
+            // Show the selected section
+            var selectedSection = document.getElementsByClassName(section)[0];
+            if (selectedSection) {
+                selectedSection.style.display = "block";
+                loadinganimation()
+            }
+        }
+    </script>
+    </div>
+    <div class="section Home">
+
+        <div id="page1">
+
+            <h1 class="heading">The best way out <h1>
+                    <h1>is always through </h1> <button onclick="  window.location.href = './cicle.html'; ">Lets Explore</button>
+
+        </div>
+        <div id="video-background">
+            <video autoplay muted loop>
+                <source src="./video (720p).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <div class="section About">
+        <h1 class="heading">About us</h1>
+        <div class="subsection">
+            <div class="onepart">
+                Hey there, at Zenmind, we're on a mission to make mental health and well-being more accessible and
+                relatable. This software app dives deep into the world of mental health surveillance, assessment, and
+                tracking – especially for folks like us. This app does not just throws around any fancy tech terms; it
+                uses real data and stats to understand your unique needs and craft personalized solutions for different
+                challenges you might face. And guess what? It won't cost you a dime to use! Plus, if you ever need some
+                one-on-one support, This has got affordable counseling sessions ready to go. Together, let's build a
+                future where every individual can thrive emotionally and mentally.
+            </div>
+            <div class="parttwo">
+                <ol>
+
+                    <li>Zenmind - Your Path to Inner Peace and Wellness</li>
+                    <li>Want to have a chat over a cup of coffee,reach out to us at School of Computer Science and IT,
+                        IET DAVV, Takshila, Indore - Empowering Minds, Transforming Futures</li>
+                    <li>Want to have a tech-tastic experience,Connect with us: <i class="fa-solid fa-phone"></i>
+                        9697XXXXXX or
+                        <i class="fa-solid fa-square-envelope"></i> xyz@gmail.com for personalized assistance and
+                        support
+                    </li>
+                    <li><a href="privacy_policy.html">Privacy Policy</a>
+                        - Because Your Secrets Are Safe with Us!- No Peekaboo with Your Personal Data!</li>
+                    <li><a href="terms_of_use.html">Terms of Use</a>
+                        - Want to Unlock the Code to mental harmony and peace? Let's Dance Through the Digital World
+                        Together but before we do that agree to our terms of use</li>
+                    <li> Join us socially at
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </li>
+
+                </ol>
+
+            </div>
+        </div>
+
+    </div>
+    <div class=" section form-container" id="form-container">
+        <h2 class="heading">Signup / Login</h2>
+
+        <form id="login-form" class="form-group">
+            <h3>Login</h3>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Login">
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" class="form-group" style="display:none;">
+            <h3 class="heading">Sign up</h3>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="signup-email">Email:</label>
+            <input type="email" id="signup-email" name="signup-email" required>
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" name="signup-password" required>
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            <input type="submit" value="Sign up">
+        </form>
+
+        <!-- Toggle buttons -->
+        <div id="toggle-buttons">
+            <button id="login-toggle" onclick="toggleForm('login-form')">Login</button>
+            <button id="signup-toggle" onclick="toggleForm('signup-form')">Sign up</button>
+        </div>
+    </div>
+    <div class="section Counsellor">
+        <div id="counsellor-content">
+            <h1 class="heading">One to one counselling Session</h1>
+            <div class="subsection">
+                <div class="onepart">
+                    <img src="counselling.png" width="30%">
+                </div>
+                <div class="parttwo">
+                    Introducing our unique feature: one-to-one counseling sessions with certified healthcare
+                    professionals. Get
+                    personalized support tailored to your needs, covering nutrition, fitness, mental health, and more.
+                    Schedule
+                    sessions conveniently and rest assured of confidentiality. We assure you that minimum prices would
+                    be
+                    chaarged for the session, ensuring accessibility to quality healthcare guidance. Take charge of your
+                    well-being today and achieve your health goals with expert support.
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="section Blog">
+        <h1 class="heading">Why should you be reading our blogs?</h1>
+
+        <div class="subsection">
+            <div class="onepart">
+                <img src="man.jpg">
+            </div>
+            <div class="parttwo">
+                <ol>
+                    <li>
+                        Expert Insights: Gain valuable insights from certified healthcare professionals on a wide
+                        range of topics.
+
+                    </li>
+                    <li>
+                        Practical Tips: Discover strategies that you can implement in your daily
+                        life to improve your lifestyle.
+
+                    </li>
+                    <li>
+                        Stay Informed: Stay up-to-date with the latest trends and developments.
+
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script type="module" src="./main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>

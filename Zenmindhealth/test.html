@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        .headingclass {
+            position: absolute;
+            top: 10%;
+            right: 40%;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <div class="headingclass">
+        <h1>
+            Your insights
+        </h1>
+    </div>
+    <h2>
+        ADS
+    </h2>
+    <div class="container">
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+        <button id="nextBtn">Next</button>
+        <div id="results"></div>
+    </div>
+    <h2>ADS</h2>
+    </h1>
+
+    <script>
+        const questions = [
+            {
+                question: "How often do you find yourself feeling sad or hopeless?",
+                options: ["Rarely", "Occasionally", "Frequently", "Almost always"],
+                correctSolution: "Almost always",
+                section: "Persistent Sadness"
+            },
+            {
+                question: "Have you noticed a persistent feeling of sadness that lasts for more than a few days?",
+                options: ["Not at all", "Sometimes", "Often", "Constantly"],
+                correctSolution: "Constantly",
+                section: "Persistent Sadness"
+            },
+            {
+                question: "Do you find it difficult to shake off feelings of hopelessness, even when good things happen?",
+                options: ["Not at all", "Occasionally", "Frequently", "Always"],
+                correctSolution: "Always",
+                section: "Persistent Sadness"
+            },
+            {
+                question: "Have you experienced a loss of interest in activities you once enjoyed due to persistent sadness?",
+                options: ["Not at all", "Sometimes", "Often", "Always"],
+                correctSolution: "Always",
+                section: "Persistent Sadness"
+            },
+            {
+                question: "How would you describe your sleep quality lately?",
+                options: ["Excellent", "Good", "Fair", "Poor"],
+                correctSolution: "Poor",
+                section: "Changes in Sleep Patterns"
+            },
+            {
+                question: "Have you had trouble falling asleep or staying asleep?",
+                options: ["Rarely", "Sometimes", "Often", "Almost every night"],
+                correctSolution: "Almost every night",
+                section: "Changes in Sleep Patterns"
+            },
+            {
+                question: "Do you find yourself waking up frequently during the night?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                correctSolution: "Often",
+                section: "Changes in Sleep Patterns"
+            },
+            {
+                question: "Have you experienced significant changes in your sleep patterns recently?",
+                options: ["No change", "Yes, I've been sleeping more than usual", "Yes, I've been sleeping less than usual", "Yes, my sleep patterns have been erratic"],
+                correctSolution: "AYes, my sleep patterns have been erratic",
+                section: "Changes in Sleep Patterns"
+            },
+            {
+                question: "How would you describe your appetite lately?",
+                options: ["Normal", "Decreased", "Increased", "Fluctuating"],
+                correctSolution: "Fluctuating",
+                section: "Appetite Changes"
+            },
+            {
+                question: "Have you noticed any changes in your eating habits, such as eating more or less than usual?",
+                options: ["No change", "Yes, I've been eating less", "Yes, I've been eating more", "Yes, my eating habits have been unpredictable"],
+                correctSolution: "Yes, my eating habits have been unpredictable",
+                section: "Appetite Changes"
+            },
+            {
+                question: "Do you often eat to cope with emotions rather than physical hunger?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                correctSolution: "Often",
+                section: "Appetite Changes"
+            },
+            {
+                question: "Have you experienced any unintended weight changes recently?",
+                options: ["No change", "Yes, I've lost weight", "Yes, I've gained weight", "Yes, my weight has been fluctuating"],
+                correctSolution: "Yes, my weight has been fluctuating",
+                section: "Appetite Changes"
+            },
+            {
+                question: "How interested are you in participating in activities you used to enjoy?",
+                options: ["Very interested", "Somewhat interested", "Not very interested", "Not interested at all"],
+                correctSolution: "Not interested at all",
+                section: "Loss of Interest"
+            },
+            {
+                question: "Have you found it difficult to motivate yourself to engage in activities you once found enjoyable?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                correctSolution: "Often",
+                section: "Loss of Interest"
+            },
+            {
+                question: "Do you feel a sense of emptiness or lack of pleasure in activities that used to bring you joy?",
+                options: ["Never", "Occasionally", "Frequently", "Always"],
+                correctSolution: "Always",
+                section: "Loss of Interest"
+            },
+            {
+                question: "Have you withdrawn from social activities or hobbies you once enjoyed?",
+                options: ["Not at all", "Sometimes", "Often", "Always"],
+                correctSolution: "Always",
+                section: "Loss of Interest"
+            },
+            {
+                question: "How would you rate your energy levels?",
+                options: ["Very High", "High", "Low", "Very Low"],
+                correctSolution: "Very Low",
+                section: "Low Energy"
+            },
+            {
+                question: "Do you often feel fatigued or exhausted?",
+                options: ["Rarely or Never", "Occasionally", "Often", "Constantly"],
+                correctSolution: "Constantly",
+                section: "Low Energy"
+            },
+            {
+                question: "Do you struggle to find motivation for daily tasks due to low energy?",
+                options: ["Not at all", "Sometimes", "Frequently", "Always"],
+                correctSolution: "Always",
+                section: "Low Energy"
+            },
+            {
+                question: "Have you noticed a significant decrease in your activity levels?",
+                options: ["Not at all", "Slightly", "Moderately", "Significantly"],
+                correctSolution: "Significantly",
+                section: "Low Energy"
+            },
+            {
+                question: "Are you able to focus on tasks without difficulty?",
+                options: ["Always", "Most of the time", "Sometimes", "Rarely or Never"],
+                correctSolution: "Rarely or Never",
+                section: "Difficulty Concentrating"
+            },
+            {
+                question: "Do you find it hard to remember things or complete tasks?",
+                options: ["Rarely or Never", "Occasionally", "Often", "Constantly"],
+                correctSolution: "Constantly",
+                section: "Difficulty Concentrating"
+            },
+            {
+                question: "Are you easily distracted while working or studying?",
+                options: ["Rarely or Never", "Occasionally", "Often", "Constantly"],
+                correctSolution: "Constantly",
+                section: "Difficulty Concentrating"
+            },
+            {
+                question: "Have you noticed a decline in your ability to concentrate?",
+                options: ["Not at all", "Slightly", "Moderately", "Significantly"],
+                correctSolution: "Significantly",
+                section: "Difficulty Concentrating"
+            },
+            {
+                question: "Do you generally feel good about yourself?",
+                options: ["Always", "Most of the time", "Sometimes", "Rarely or Never"],
+                correctSolution: "Rarely or Never",
+                section: "Negative Self-Perception"
+            },
+            {
+                question: "Do you often feel inadequate or worthless?",
+                options: ["Rarely or Never", "Occasionally", "Often", "Constantly"],
+                correctSolution: "Constantly",
+                section: "Negative Self-Perception"
+            },
+            {
+                question: "Are you satisfied with who you are?",
+                options: ["Completely", "Mostly", "Partially", "Not at all"],
+                correctSolution: "Not at all",
+                section: "Negative Self-Perception"
+            },
+            {
+                question: "Have you experienced persistent negative thoughts about yourself?",
+                options: ["Rarely or Never", "Occasionally", "Often", "Constantly"],
+                correctSolution: "Constantly",
+                section: "Negative Self-Perception"
+            },
+            {
+                question: "How often do you engage in social activities?",
+                options: ["Very Frequently", "Frequently", "Occasionally", "Rarely or Never"],
+                correctSolution: "Rarely or Never",
+                section: "Isolation"
+            },
+            {
+                question: "Do you enjoy spending time with others?",
+                options: ["Always", "Most of the time", "Sometimes", "Rarely or Never"],
+                correctSolution: "Rarely or Never",
+                section: "Isolation"
+            },
+            {
+                question: "Have you been avoiding social interactions?",
+                options: ["Rarely or Never", "Occasionally", "Often", "Constantly"],
+                correctSolution: "Constantly",
+                section: "Isolation"
+            },
+            {
+                question: "Do you prefer being alone over socializing with others?",
+                options: ["Rarely or Never", "Occasionally", "Often", "Always"],
+                correctSolution: "Always",
+                section: "Isolation"
+            },
+            {
+                question: "Have you had thoughts of harming yourself?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                correctSolution: "Often",
+                section: "Suicidal Thoughts"
+            },
+            {
+                question: "Do you feel like life is not worth living?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                correctSolution: "Often",
+                section: "Suicidal Thoughts"
+            },
+            {
+                question: "Have you considered suicide as a solution to your problems?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                correctSolution: "Often",
+                section: "Suicidal Thoughts"
+            },
+            {
+                question: "Have you made any plans to harm yourself?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                correctSolution: "Often",
+                section: "Suicidal Thoughts"
+            }
+        ];
+
+
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const nextBtn = document.getElementById('nextBtn');
+        const resultsElement = document.getElementById('results');
+
+        let currentQuestionIndex = 0;
+        const sectionScores = {};
+
+        questions.forEach(question => {
+            sectionScores[question.section] = 0;
+        });
+
+        function showQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+            optionsElement.innerHTML = '';
+            currentQuestion.options.forEach(option => {
+                const optionBtn = document.createElement('button');
+                optionBtn.textContent = option;
+                optionBtn.classList.add('optionBtn');
+                optionBtn.addEventListener('click', () => {
+                    checkAnswer(option, currentQuestion.section);
+                });
+                optionsElement.appendChild(optionBtn);
+            });
+        }
+
+        function checkAnswer(selectedOption, section) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selectedOption === currentQuestion.correctSolution) {
+                sectionScores[section]++;
+            }
+            nextBtn.style.display = 'block';
+        }
+        const depressionSigns = {
+            "Persistent Sadness": "Encourage students to talk about their feelings with a trusted friend, family member, or counselor.",
+            "Changes in Sleep Patterns": "Establish a consistent sleep schedule and create a relaxing bedtime routine.",
+            "Appetite Changes": "Aim for balanced meals and practice mindful eating.",
+            "Loss of Interest": "Set small, achievable goals for participating in enjoyable activities.",
+            "Low Energy": "Incorporate regular physical activity into their routine.",
+            "Difficulty Concentrating": "Break tasks into smaller steps and minimize distractions.",
+            "Negative Self-Perception": "Challenge negative thoughts with positive affirmations.",
+            "Isolation": "Facilitate social connections through virtual activities or discussion groups.",
+            "Suicidal Thoughts": "Ensure access to crisis support resources and encourage seeking help."
+        };
+        // function showResults() {
+        //     resultsElement.innerHTML = '<h3>Results</h3>';
+        //     const threshold = 3; // Threshold score to print the statement
+
+        //     for (const section in sectionScores) {
+        //         if (sectionScores[section] > threshold && depressionSigns.hasOwnProperty(section)) {
+        //             resultsElement.innerHTML += `<p>${section}: ${sectionScores[section]}</p>`;
+        //             resultsElement.innerHTML += `<p>${depressionSigns[section]}</p>`;
+        //         }
+        //     }
+        //     document.getElementById("question").style.display="none";
+        //     document.getElementById("options").style.display="none";
+        //     document.getElementById("nextBtn").style.display="none";
+
+
+        // }
+        function showResults() {
+            resultsElement.innerHTML = '<h3>Results</h3>';
+            const threshold = 2; // Threshold score to count as a significant sign
+            let count = 0; // Counter for sections with scores greater than threshold
+
+            // Count sections with scores greater than threshold
+            for (const section in sectionScores) {
+                if (sectionScores[section] > threshold) {
+                    count++;
+                }
+            }
+
+            // Check if count exceeds 5, if so, display the message
+            if (count >= 5) {
+                resultsElement.innerHTML += "<p>You need to visit the doctor.</p>";
+            }
+            document.getElementById("question").style.display = "none";
+            document.getElementById("options").style.display = "none";
+            document.getElementById("nextBtn").style.display = "none";
+        }
+
+        showQuestion();
+
+        nextBtn.addEventListener('click', () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+                nextBtn.style.display = 'none';
+            } else {
+                showResults();
+                nextBtn.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

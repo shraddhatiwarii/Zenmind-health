@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nested Questioning Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  .question-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .question {
+    font-weight: bold;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .nested-question-container {
+    display: none;
+    margin-left: 20px;
+  }
+  .nested-question {
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+  .answer-container {
+    margin-bottom: 10px;
+  }
+  .answer-label {
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="question-container" id="main-question-container">
+  <div class="question" onclick="toggleNestedQuestions(this)">Click to reveal more questions</div>
+  <div class="nested-question-container" id="nested-question-container">
+    <!-- Nested Questions will be added here dynamically -->
+  </div>
+</div>
+
+<div id="result"></div>
+
+<script>
+  const questions = [
+    {
+      question: "Main Question 1",
+      nestedQuestions: [
+        "Nested Question 1.1: Is the sky blue?",
+        "Nested Question 1.2: Are oranges orange?",
+        "Nested Question 1.3: Is the Earth flat?",
+        "Nested Question 1.4: Do birds fly?"
+      ]
+    },
+    {
+      question: "Main Question 2",
+      nestedQuestions: [
+        "Nested Question 2.1: Is the sun hot?",
+        "Nested Question 2.2: Are cats mammals?",
+        "Nested Question 2.3: Do fish breathe underwater?",
+        "Nested Question 2.4: Is chocolate tasty?"
+      ]
+    },
+    // Add more questions as needed
+  ];
+
+  const mainQuestionContainer = document.getElementById('main-question-container');
+  const nestedQuestionContainer = document.getElementById('nested-question-container');
+
+  // Initialize the page with the first main question
+  displayMainQuestion(questions[0]);
+
+  function displayMainQuestion(questionData) {
+    mainQuestionContainer.innerHTML = `<div class="question">${questionData.question}</div>`;
+    nestedQuestionContainer.innerHTML = ""; // Reset nested questions container
+    questionData.nestedQuestions.forEach(nestedQuestion => {
+      const nestedQuestionDiv = document.createElement('div');
+      nestedQuestionDiv.classList.add('nested-question');
+      nestedQuestionDiv.textContent = nestedQuestion;
+      nestedQuestionContainer.appendChild(nestedQuestionDiv);
+    });
+  }
+
+  function toggleNestedQuestions(mainQuestion) {
+    const isExpanded = mainQuestion.nextElementSibling.style.display === 'block';
+    if (isExpanded) {
+      mainQuestion.nextElementSibling.style.display = 'none';
+    } else {
+      mainQuestion.nextElementSibling.style.display = 'block';
+    }
+  }
+
+  function checkAnswers() {
+    let score = 0;
+
+    questions.forEach(mainQuestion => {
+      const nestedQuestionDiv = document.getElementById('nested-question-container');
+      const nestedQuestions = nestedQuestionDiv.getElementsByClassName('nested-question');
+      
+      let correctAnswers = 0;
+
+      for (let i = 0; i < nestedQuestions.length; i++) {
+        // Simulate checking answers by randomly selecting true or false
+        const isTrue = Math.random() < 0.5; // Randomly true/false
+
+        // For demonstration purposes, let's assume if the answer is true, it's correct
+        if (isTrue) {
+          correctAnswers++;
+        }
+      }
+
+      // If at least 3 out of 4 answers are correct, increase the score
+      if (correctAnswers >= 3) {
+        score++;
+      }
+    });
+
+    document.getElementById('result').textContent = `You got ${score} out of ${questions.length} questions correct.`;
+  }
+</script>
+
+<button onclick="checkAnswers()">Check Answers</button>
+
+</body>
+</html>

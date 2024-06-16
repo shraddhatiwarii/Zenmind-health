@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            /* Layout container */
+            --grid-small: 1200px;
+            --grid-large: 1440px;
+
+            /* Colours */
+            --gray-50: #f5f5f5;
+            --gray-100: #e5e5e5;
+            --gray-200: #cccccc;
+            --gray-300: #999999;
+            --gray-400: #737373;
+            --gray-500: #454545;
+            --gray-600: #383838;
+            --gray-700: #2a2a2a;
+            --gray-800: #1e1e1e;
+            --gray-900: #141414;
+            --color-primary: #793690;
+            --color-text: var(--gray-200);
+            --color-text-muted: var(--gray-400);
+            --color-bg: #0f0f0f;
+
+            /* Spacing system */
+            --spacer-base: 8px;
+            --spacer-half: calc(var(--spacer-base) / 2);
+            --spacer-1: var(--spacer-base);
+            --spacer-2: calc(var(--spacer-base) * 2);
+            --spacer-3: calc(var(--spacer-base) * 3);
+            --spacer-4: calc(var(--spacer-base) * 4);
+            --spacer-6: calc(var(--spacer-base) * 3);
+            --spacer-8: calc(var(--spacer-base) * 8);
+
+            /* Extra stuff */
+            --cover-img-url: url("./outlook.jpg");
+            --font-family: Inter, Arial, sans-serif;
+            --button-bg: var(--color-primary);
+            --button-bg-hover: #5a286b;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-size: 16px;
+        }
+
+        main {
+            max-width: var(--grid-small);
+            padding: var(--spacer-2);
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+
+
+
+
+        .topic-teaser {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            padding: var(--spacer-4);
+            position: relative;
+            background: var(--gray-800);
+            height: 300px;
+            border-radius: 8px;
+            background-image: var(--cover-img-url);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .topic-teaser h1 {
+            margin: 0;
+            color: white;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .topic-teaser:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+        }
+
+        .topic-details {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            padding: var(--spacer-4) 0;
+        }
+
+        .topic-details-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .topic-description {
+            line-height: 1.5;
+            max-width: 800px;
+        }
+
+        .topic-stats {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .topic-stat {
+            margin-right: var(--spacer-4);
+        }
+
+        .topic-stat:last-child {
+            margin-right: 0;
+        }
+
+        .topic-stat-header {
+            margin: 0 0 var(--spacer-half);
+            text-align: center;
+            font-size: 12px;
+            font-weight: normal;
+            color: var(--color-text-muted);
+        }
+
+        .topic-stat-value {
+            margin: 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .article-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            margin: 0 calc(-1 * var(--spacer-1));
+        }
+
+        .article-card {
+            background-color: var(--gray-800);
+            padding: var(--spacer-2);
+            height: 200px;
+            margin: var(--spacer-1);
+            border-radius: 4px;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: white;
+            border: 0;
+            border-radius: 4px;
+            font-family: var(--font-family);
+            font-size: 14px;
+            line-height: 16px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: background-color 300ms ease-out;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: var(--button-bg-hover);
+        }
+
+        /*
+  LAYOUT RESPONSIVENESS
+
+  Breakpoints:
+  - XS: 0px;
+  - SM: 600px;
+  - MD: 960px;
+  - LG: 1280px;
+  - XL: 1920px;
+*/
+
+        /* SM viewport overrides */
+        @media (min-width: 600px) {
+            .topic-teaser {
+                align-items: flex-start;
+            }
+
+            .topic-teaser h1 {
+                text-align: left;
+            }
+
+            .article-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .article-card {
+                flex-basis: calc(50% - var(--spacer-2));
+            }
+        }
+
+        /* MD viewport overrides */
+        @media (min-width: 960px) {
+            .topic-teaser {
+                height: 400px;
+            }
+
+            .topic-details {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .topic-details-wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+                flex: 1;
+                margin-right: var(--spacer-4);
+            }
+
+            .topic-description {
+                text-align: left;
+                margin-right: var(--spacer-4);
+            }
+        }
+
+        /* LG viewport overrides */
+        @media (min-width: 1280px) {
+            main {
+                padding-top: var(--spacer-4);
+            }
+
+            .article-card {
+                flex-basis: calc(33.33% - var(--spacer-2));
+            }
+        }
+
+        /* XL viewport overrides */
+        @media (min-width: 1920px) {
+            main {
+                max-width: var(--grid-large);
+            }
+
+            .topic-teaser {
+                height: 500px;
+            }
+
+            .topic-teaser h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="topic-cover">
+            <header class="topic-teaser">
+                <h1>Depression</h1>
+            </header>
+            <div class="topic-details">
+                <div class="topic-details-wrapper">
+                    <p class="topic-description">Depression isn't just sadness; it's a labyrinth of emotions that can engulf you. Yet, within this darkness lies the spark of resilience. You are not defined by your struggles; you possess the strength to navigate through them. Seek support, take small steps forward, and believe in the possibility of a brighter tomorrow. Your journey towards overcoming depression is a testament to your inner fortitude.</p>
+                    <ul class="topic-stats">
+                        <li class="topic-stat">
+                            <h6 class="topic-stat-header">Articles</h6>
+                            <p class="topic-stat-value">9</p>
+                        </li>
+                        <li class="topic-stat">
+                            <h6 class="topic-stat-header">Contributors</h6>
+                            <p class="topic-stat-value">3</p>
+                        </li>
+                    </ul>
+                </div>
+                <button>Subscribe</button>
+            </div>
+        </section>
+        <section class="articles">
+            <h2>Article list</h2>
+            <ul class="article-list">
+                <li class="article-card" style="background-image: url('./depr1.jpg'); ">
+                    <p>consultant</p>
+                </li>
+                <li class="article-card" style=" background-image: url('./soccer.jpg');">
+                    <p>Sports</p>
+                </li>
+                <li class="article-card" style=" background-image: url('./street.jpg');">
+                    <p>Nature Walk</p>
+                </li>
+                <li class="article-card" style=" background-image: url('./meditate.jpg');">
+                    <p>Meditation</p>
+                </li>
+            </ul>
+        </section>
+
+        <button type="button"onclick="test()">
+            Lets Evaluate
+        </button>
+    </main>
+    <script>
+      function test(){
+        window.location.href = './test.html'; //Will take you to Google.
+      }
+    </script>
+</body>
+
+</html>
